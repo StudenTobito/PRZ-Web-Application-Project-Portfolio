@@ -1,0 +1,221 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  background: #0a0f0a !important;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', monospace !important;
+  color: #00ff41 !important;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background: #101510;
+  color: #00ff41 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem 1.5rem;
+  z-index: 200;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.04);
+  border-right: 2px solid #00ff41;
+}
+.sidebar h1 {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #00ff41 !important;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+}
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+.sidebar nav a {
+  color: #00ff41 !important;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.2s, background 0.2s;
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  border-left: 3px solid transparent;
+  display: block;
+}
+.sidebar nav a:hover, .sidebar nav a:focus {
+  color: #0a0f0a !important;
+  background: #00ff41 !important;
+  border-left: 3px solid #00ff41;
+}
+.main {
+  flex: 1;
+  margin-left: 240px;
+  padding: 2rem 2rem 2rem 2rem;
+  max-width: 900px;
+  width: 100%;
+  background: transparent;
+  color: #00ff41 !important;
+}
+.section {
+  background: rgba(10, 15, 10, 0.95);
+  border-radius: 10px;
+  border: 1.5px solid #00ff41;
+  box-shadow: 0 2px 16px rgba(0,255,65,0.08);
+  margin-bottom: 2.5rem;
+  padding: 2rem 2rem 1.5rem 2rem;
+}
+.section h2 {
+  color: #00ff41 !important;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-family: inherit;
+  letter-spacing: 1.5px;
+}
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: none;
+    border-right: none;
+    border-bottom: 2px solid #00ff41;
+  }
+  .sidebar h1 {
+    margin-bottom: 0;
+    margin-right: 2rem;
+  }
+  .sidebar nav {
+    flex-direction: row;
+    gap: 1.5rem;
+    width: auto;
+  }
+  .sidebar nav a {
+    border-left: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.5rem 0.5rem;
+  }
+  .sidebar nav a:hover, .sidebar nav a:focus {
+    border-bottom: 2px solid #00ff41;
+    border-left: none;
+    background: #00ff41 !important;
+    color: #0a0f0a !important;
+  }
+  .main {
+    margin-left: 0;
+    padding: 90px 1rem 2rem 1rem;
+    max-width: 100%;
+  }
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: #181f18;
+  border: 1.5px solid #00ff41;
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: #00ff41;
+  box-shadow: 0 2px 12px #00ff4122;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.project-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 4px 24px #00ff4144;
+}
+.project-card h3 {
+  color: #00ff41;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+.project-links {
+  margin-top: 1rem;
+}
+.project-links a,
+.contact-links a {
+  color: #00ff41 !important;
+  text-decoration: underline;
+  font-weight: bold;
+  margin-right: 1rem;
+  transition: color 0.2s;
+}
+.project-links a:hover,
+.contact-links a:hover {
+  color: #0a0f0a !important;
+  background: #00ff41 !important;
+}
+.contact-links {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+img[alt="Sabri Küçük"] {
+  border: 3px solid #00ff41;
+  box-shadow: 0 0 16px #00ff4144;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #101510;
+}
+::-webkit-scrollbar-thumb {
+  background: #00ff41;
+  border-radius: 4px;
+}
