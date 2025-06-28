@@ -1,32 +1,27 @@
 # Stage 1: Build the React application
 FROM node:20-alpine AS build
 WORKDIR /app
-<<<<<<< HEAD
-COPY package*.json ./
-RUN npm install
-=======
 
-# Sadece gerekli dosyaları kopyala
+# Copy package files first for better caching
 COPY package.json package-lock.json ./
 
-# node_modules ve lockfile sorunlarını önlemek için temiz kurulum
+# Clean installation to avoid node_modules and lockfile issues
 RUN npm ci || npm install
 
-# Uygulama kaynaklarını kopyala
->>>>>>> fc6db08 (Update Dockerfile for robust build)
+# Copy application source code
 COPY . .
 
-# Build işlemi
+# Build the application
 RUN npm run build
 
 # Stage 2: Serve the application with a lightweight server
 FROM node:20-alpine
 WORKDIR /app
 
-# Sadece build çıktısını kopyala
+# Copy only the build output
 COPY --from=build /app/dist /app/dist
 
-# Static server kur
+# Install static server
 RUN npm install -g serve
 
 EXPOSE 3000

@@ -1,3 +1,5 @@
+I'm sorry about the latency of the project, I had problems with github because of that I had to change my original repository to this one, it's not my main account, if you check the application you can see all the things you need.
+
 # Portfolio Web Application Project
 
 ## Project Overview
