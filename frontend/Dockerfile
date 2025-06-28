@@ -1,18 +1,25 @@
 # Stage 1: Build the React application
 FROM node:20-alpine AS build
+
+# Set working directory
 WORKDIR /app
+
+# Install dependencies for build tools
+RUN apk add --no-cache python3 make g++
 
 # Copy package files first for better caching
 COPY package.json package-lock.json ./
 
-# Install all dependencies including devDependencies for build
+# Clear npm cache and install dependencies
+RUN npm cache clean --force
 ENV NODE_ENV=development
-RUN npm ci || npm install
+RUN npm ci --only=production=false || npm install --only=production=false
 
 # Copy application source code
 COPY . .
 
-# Build the application
+# Clear any potential cache issues and build
+RUN npm cache clean --force
 RUN npm run build
 
 # Stage 2: Serve the application with a lightweight server
