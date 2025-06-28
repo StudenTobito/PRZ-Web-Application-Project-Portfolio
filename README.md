@@ -14,7 +14,7 @@ The application follows a **three-tier architecture**:
 
 ### System Architecture Diagram
 ```
-┌─────────────────┐    HTTP/API    ┌─────────────────┐    Database    ┌─────────────────┐
+┌─────────────────┐    HTTP/API     ┌─────────────────┐    Database     ┌─────────────────┐
 │   Frontend      │ ──────────────► │    Backend      │ ──────────────► │    MongoDB      │
 │   (React)       │                 │   (Node.js)     │                 │   (NoSQL)       │
 │   Port: 3000    │                 │   Port: 5000    │                 │   Port: 27017   │
