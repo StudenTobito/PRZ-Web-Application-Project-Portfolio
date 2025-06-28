@@ -15,12 +15,15 @@ RUN npm cache clean --force
 ENV NODE_ENV=development
 RUN npm install
 
+# Ensure vite is available globally
+RUN npm install -g vite
+
 # Copy application source code
 COPY . .
 
-# Clear any potential cache issues and build
+# Clear any potential cache issues and build using npx
 RUN npm cache clean --force
-RUN npm run build
+RUN npx vite build
 
 # Stage 2: Serve the application with a lightweight server
 FROM node:20-alpine
