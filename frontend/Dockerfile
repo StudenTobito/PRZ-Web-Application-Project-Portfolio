@@ -13,7 +13,7 @@ COPY package.json package-lock.json ./
 # Clear npm cache and install dependencies
 RUN npm cache clean --force
 ENV NODE_ENV=development
-RUN npm ci --only=production=false || npm install --only=production=false
+RUN npm install
 
 # Copy application source code
 COPY . .
