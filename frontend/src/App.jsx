@@ -6,7 +6,8 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/projects')
+    // Fetch projects from GitHub API
+    fetch('https://api.github.com/users/TobitoSabrito/repos')
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Network response was not ok, status: ${res.status}`);
@@ -15,7 +16,20 @@ function App() {
       })
       .then((data) => {
         if (Array.isArray(data)) {
-          setProjects(data);
+          // Transform GitHub repos to project format
+          const transformedProjects = data
+            .filter(repo => !repo.fork) // Only show original repos, not forks
+            .map((repo, index) => ({
+              id: repo.id,
+              title: repo.name,
+              description: repo.description || 'No description available',
+              githubUrl: repo.html_url,
+              language: repo.language,
+              stars: repo.stargazers_count,
+              forks: repo.forks_count,
+              updatedAt: new Date(repo.updated_at).toLocaleDateString()
+            }));
+          setProjects(transformedProjects);
         } else {
           console.error("Data received is not an array, setting to empty:", data);
           setProjects([]);
@@ -52,12 +66,17 @@ function App() {
           {loading ? <p>Loading projects...</p> : (
             <div className="projects-grid">
               {projects.map((project) => (
-                <div key={project.id || project._id} className="project-card">
+                <div key={project.id} className="project-card">
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>
+                  <div className="project-meta">
+                    {project.language && <span className="language">{project.language}</span>}
+                    <span className="stars">⭐ {project.stars}</span>
+                    <span className="forks">🍴 {project.forks}</span>
+                    <span className="updated">Updated: {project.updatedAt}</span>
+                  </div>
                   <div className="project-links">
-                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
                   </div>
                 </div>
               ))}
